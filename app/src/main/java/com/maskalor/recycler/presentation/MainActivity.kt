@@ -2,14 +2,11 @@ package com.maskalor.recycler.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.maskalor.recycler.R
-import com.maskalor.recycler.data.Task
 
 class MainActivity() : AppCompatActivity() {
 
@@ -30,11 +27,11 @@ class MainActivity() : AppCompatActivity() {
             startActivity(TaskActivity.getIntent(this, it.name, it.description))
         }
 
-        adapter.onLongClick = {
-            viewModel.changeFavoriteState(it)
+        adapter.onLongClick = { task, pos ->
+            viewModel.changeFavoriteState(task)
+            adapter.update(pos)
             true
         }
-
 
         viewModel.taskList.observe(this) {
             adapter.submitList(it)

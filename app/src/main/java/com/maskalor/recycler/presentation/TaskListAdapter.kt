@@ -15,7 +15,7 @@ class TaskListAdapter(): ListAdapter<Task, TaskListAdapter.MyViewHolder>(
 ) {
 
     var onClick: ((Task) -> Unit)? = null
-    var onLongClick: ((Task) -> Boolean)? = null
+    var onLongClick: ((Task, Int) -> Boolean)? = null
 
 
 
@@ -54,11 +54,14 @@ class TaskListAdapter(): ListAdapter<Task, TaskListAdapter.MyViewHolder>(
         }
 
         holder.itemView.setOnLongClickListener{
-            onLongClick?.invoke(currentList[position])
+            onLongClick?.invoke(currentList[position], position)
             true
         }
     }
 
+    fun update(position: Int) {
+        notifyItemChanged(position)
+    }
 
 
     class MyViewHolder(view: View) : ViewHolder(view) {

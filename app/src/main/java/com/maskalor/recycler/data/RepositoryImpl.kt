@@ -31,7 +31,7 @@ object RepositoryImpl : Repository {
             it.id == task.id
         }
         taskList.remove(oldTask)
-        taskList.add(task)
+        taskList.add(task.id, task)
     }
 
 

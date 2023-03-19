@@ -2,7 +2,6 @@ package com.maskalor.recycler.presentation
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.createSavedStateHandle
 import com.maskalor.recycler.data.RepositoryImpl
 import com.maskalor.recycler.data.Task
 import com.maskalor.recycler.domain.useCases.AddTaskUseCase
